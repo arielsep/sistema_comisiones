@@ -7,6 +7,7 @@ package edu.itla.sistemacomisiones.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +38,12 @@ public class Conexion {
     private Conexion() throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");  
         conn = DriverManager.getConnection(  
-        "jdbc:mysql://localhost:3306/sistema_comision","usuario_sistemas_comisiones","123456");  
+        "jdbc:mysql://localhost:3306/sistema_comision?serverTimezone=AST","usuario_sistemas_comisiones","123456");  
     }
-}
+    
+    public ResultSet executeQuery(String sql) throws SQLException{
+        return conn.createStatement().executeQuery(sql); 
+    }
+    
+} 
+
