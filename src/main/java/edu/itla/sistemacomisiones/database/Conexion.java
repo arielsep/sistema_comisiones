@@ -40,7 +40,7 @@ public class Conexion {
     private Conexion() throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");  
         conn = DriverManager.getConnection(  
-        "jdbc:mysql://localhost:3306/sistema_comision?serverTimezone=AST","usuario_sistemas_comisiones","123456");  
+        "jdbc:mysql://localhost:3306/sistema_comision?serverTimezone=AST&verifyCertificate=false","usuario_sistemas_comisiones","123456");  
     }
     
     public ResultSet executeQuery(String sql) throws SQLException{
@@ -48,7 +48,7 @@ public class Conexion {
     }
    
     public PreparedStatement prepareStatement(String sql) throws SQLException{
-        return conn.prepareStatement(sql);
+        return conn.prepareStatement(sql,com.mysql.cj.api.jdbc.Statement.RETURN_GENERATED_KEYS);
        
     }  
 } 
