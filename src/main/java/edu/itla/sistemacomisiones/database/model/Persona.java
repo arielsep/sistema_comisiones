@@ -14,7 +14,7 @@ public class Persona {
    private String nombre;
    private String apellido;
    private String documentoIdentidad;       
-   private char sexo;
+   private String sexo;
    private String correo;
    private String celular;
    private Direccion direccion; 
@@ -24,7 +24,8 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int id, String nombre, String apellido, String documentoIdentidad, char sexo, String correo, String celular, Direccion direccion) {
+    public Persona(int id, String nombre, String apellido, String documentoIdentidad, 
+            String sexo, String correo, String celular, Direccion direccion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -68,11 +69,11 @@ public class Persona {
         this.documentoIdentidad = documentoIdentidad;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 

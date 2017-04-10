@@ -5,6 +5,7 @@
  */
 package edu.itla.sistemacomisiones.database.controlador;
 
+import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.Persona;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,6 +44,9 @@ public class PersonaControlador extends Controlador<Persona> {
             st.setString(2, obj.getApellido());
             st.setString(3, obj.getDocumentoIdentidad());
             st.setString(4, obj.getSexo());
+            st.setString(5, obj.getCorreo());
+            st.setString(6, obj.getCelular());
+            st.setInt(7, obj.getDireccion().getId());
             
             obj.setId(st.executeUpdate());
  
@@ -54,7 +58,26 @@ public class PersonaControlador extends Controlador<Persona> {
 
     @Override
     public Persona actualizar(Persona obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement st = con.prepareStatement("UPDATE "+ tablaBaseDeDatos +
+                    " SET `nombre`= ?,apellido`=?,"
+                     + "`documento_identidad`=?,`correo`=?,"
+                     + "`celular`=? sexo=?,direccion_id`=? WHERE `id`=?;" );
+            st.setString(1, obj.getNombre());
+            st.setString(2, obj.getApellido());
+            st.setString(3, obj.getDocumentoIdentidad());
+            st.setString(4, obj.getCorreo());
+            st.setString(5, obj.getCelular());
+            st.setString(6, obj.getSexo());
+            st.setInt(7, obj.getDireccion().getId());
+            st.setInt(8, obj.getId());
+            st.executeUpdate();
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+        }
+        return obj;
+        
     }
 
     @Override
@@ -64,7 +87,10 @@ public class PersonaControlador extends Controlador<Persona> {
 
     @Override
     public Persona crearDeResultSet(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Direccion dr = DireccionControlador.getInstancia().obtenerPorId(rs.getInt("direccion_id"));
+        return new Persona(rs.getInt("id"), rs.getString("nombre"), 
+                rs.getString("apellido"), rs.getString("documento_identidad"),
+                rs.getString("sexo"),rs.getString("correo"),rs.getString("celular"),
+                dr);
     }
-    
 }
