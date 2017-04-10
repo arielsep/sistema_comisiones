@@ -18,12 +18,15 @@ public class Inmueble {
     private TipoInmueble tipoInmueble;
     private Direccion direccion;
     private Moneda moneda;
+    private Double comision;
 
     public Inmueble() {
 
     }
 
-    public Inmueble(int id, String detalles, Double precio, String superficie, int dormitorios, TipoInmueble tipoInmueble, Direccion direccion, Moneda moneda) {
+    public Inmueble(int id, String detalles, Double precio, 
+            String superficie,int dormitorios, TipoInmueble tipoInmueble,
+            Direccion direccion, Moneda moneda, Double comision) {
         this.id = id;
         this.detalles = detalles;
         this.precio = precio;
@@ -32,6 +35,7 @@ public class Inmueble {
         this.tipoInmueble = tipoInmueble;
         this.direccion = direccion;
         this.moneda = moneda;
+        this.comision = comision;
     }
 
     public int getId() {
@@ -97,4 +101,14 @@ public class Inmueble {
     public void setMoneda(Moneda moneda) {
         this.moneda = moneda;
     }
+
+    public Double getComision() {
+        return comision;
+    }
+
+    public void setComision(Double comision) {
+        this.comision = comision;
+    }
+    
+    
 }

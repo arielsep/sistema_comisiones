@@ -31,7 +31,7 @@ public class InmuebleControlador extends Controlador<Inmueble>{
         try {
             PreparedStatement st = con.prepareStatement("INSERT INTO "+ tablaBaseDeDatos +
                     "  (`detalles`, `precio`, `superficie`, `dormitorios`, `tipo_inmuebles_id`,"
-                            + " `direccion_id`, `moneda_id`) VALUES (?, ?, ?, ?, ?, ?, ?); " );
+                            + " `direccion_id`, `moneda_id`, `comision`) VALUES (?, ?, ?, ?, ?, ?, ?, ?); " );
             st.setString(1, obj.getDetalles());
             st.setDouble(2, obj.getPrecio());
             st.setString(3, obj.getSuperficie());
@@ -39,6 +39,7 @@ public class InmuebleControlador extends Controlador<Inmueble>{
             st.setInt(5, obj.getTipoInmueble().getId());
             st.setInt(6, obj.getDireccion().getId());
             st.setInt(7, obj.getMoneda().getId());
+            st.setDouble(8, obj.getComision());
             obj.setId(st.executeUpdate());
  
         } catch (SQLException ex) {
@@ -52,15 +53,19 @@ public class InmuebleControlador extends Controlador<Inmueble>{
         try {
             PreparedStatement st = con.prepareStatement("UPDATE "+ tablaBaseDeDatos +
                     " SET `detalles`=?, `precio`=?, `superficie`=?, `dormitorios`=?,"
-                            + " `tipo_inmuebles_id`=?, `direccion_id`=?, `moneda_id`=?, WHERE `id`=?;" );
+                            + " `tipo_inmuebles_id`=?, `direccion_id`=?, `moneda_id`=?,"
+                            + " comision=? WHERE `id`=?;" );
             st.setString(1, obj.getDetalles());
             st.setDouble(2, obj.getPrecio());
             st.setString(3, obj.getSuperficie());
             st.setInt(4, obj.getDormitorios());
-            st.setInt(5, obj.getId());
-            st.setInt(6, obj.getTipoInmueble().getId());
-            st.setInt(7, obj.getDireccion().getId());
-            st.setInt(4, obj.getMoneda().getId());
+            st.setInt(5, obj.getTipoInmueble().getId());
+            st.setInt(6, obj.getDireccion().getId());
+            st.setInt(7, obj.getMoneda().getId());
+            st.setDouble(8, obj.getComision());
+            st.setInt(9, obj.getId());
+
+
             st.executeUpdate();
  
         } catch (SQLException ex) {
@@ -76,12 +81,17 @@ public class InmuebleControlador extends Controlador<Inmueble>{
 
     @Override
     public Inmueble crearDeResultSet(ResultSet rs) throws SQLException {
-        TipoInmueble tipoInmueble = TipoInmuebleControlador.getInstancia().obtenerPorId(rs.getInt("tipo_inmuebles_id"));
-        Direccion direccion = DireccionControlador.getInstancia().obtenerPorId(rs.getInt("direccion_id"));
-        Moneda moneda = MonedaControlador.getInstancia().obtenerPorId(rs.getInt("moneda_id"));
+        TipoInmueble tipoInmueble = TipoInmuebleControlador.getInstancia()
+                .obtenerPorId(rs.getInt("tipo_inmuebles_id"));
+        Direccion direccion = DireccionControlador.getInstancia()
+                .obtenerPorId(rs.getInt("direccion_id"));
+        Moneda moneda = MonedaControlador.getInstancia()
+                .obtenerPorId(rs.getInt("moneda_id"));
 
 
         return new Inmueble(rs.getInt("id"), rs.getString("detalles"),
-                    rs.getDouble("precio"),rs.getString("superficie"),rs.getInt("dormitorios"),tipoInmueble,direccion,moneda);
+                    rs.getDouble("precio"),rs.getString("superficie"),
+                    rs.getInt("dormitorios"),tipoInmueble,direccion,
+                    moneda, rs.getDouble("comision"));
     }
 }
