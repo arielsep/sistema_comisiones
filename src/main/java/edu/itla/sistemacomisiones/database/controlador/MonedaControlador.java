@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.itla.sistemacomisiones.database.controlador;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
@@ -13,10 +9,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author wilmanpc
- */
 public class MonedaControlador extends Controlador<Moneda>  {
     private static MonedaControlador controlador;
     
@@ -74,7 +66,7 @@ public class MonedaControlador extends Controlador<Moneda>  {
     @Override
     public Moneda crearDeResultSet(ResultSet rs) throws SQLException {
        return new Moneda(rs.getInt("id"), rs.getString("nombre"),
-                    rs.getString("simbolo"),rs.getDouble("tasa"),rs.getBoolean("esPrincipal"));
+                    rs.getString("simbolo"),rs.getDouble("tasa"),rs.getBoolean("es_principal"));
     }
     
 }
