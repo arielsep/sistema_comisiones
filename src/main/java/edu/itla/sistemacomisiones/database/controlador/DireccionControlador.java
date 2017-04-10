@@ -5,6 +5,7 @@
  */
 package edu.itla.sistemacomisiones.database.controlador;
 
+import com.mysql.cj.api.jdbc.Statement;
 import edu.itla.sistemacomisiones.MainApp;
 import edu.itla.sistemacomisiones.database.Conexion;
 import edu.itla.sistemacomisiones.database.model.Direccion;
@@ -19,54 +20,60 @@ import java.util.logging.Logger;
  *
  * @author Annelisse
  */
-public class DireccionControlador implements Controlador<Direccion> {
-    private Conexion con; 
-   public DireccionControlador(){
-        con = Conexion.getInstancia();
-        
+public class DireccionControlador extends Controlador<Direccion> {
+    private static DireccionControlador controlador;
+    
+    public static DireccionControlador getInstancia (){
+           if (controlador == null){
+               controlador = new DireccionControlador();
+           }
+           return controlador;
+    }
+    
+    private DireccionControlador() {
+        super("direccion");
     }
 
     @Override
     public Direccion crear(Direccion obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement st = con.prepareStatement("INSERT INTO "+ tablaBaseDeDatos +
+                    "  (`calle`, `sector`, `ciudad`, `provincia`) VALUES (?, ?, ?, ?); " );
+            st.setString(1, obj.getCalle());
+            st.setString(2, obj.getSector());
+            st.setString(3, obj.getCiudad());
+            st.setString(4, obj.getProvincia());
+            obj.setId(st.executeUpdate());
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+        }
+        return obj;
     }
 
     @Override
     public Direccion actualizar(Direccion obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Direccion eliminar(Direccion obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Direccion obtenerPorId(int id) {
-         try {
-            PreparedStatement st = con.prepareStatement("SELECT * FROM direccion where id = ?");
-            st.setInt(1, id);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()){
-                return crearDeResultSet(rs);
-            }
-            //launch(args);
+       try {
+            PreparedStatement st = con.prepareStatement("UPDATE "+ tablaBaseDeDatos +
+                    " SET `calle`=?, `sector`=?, `ciudad`=?, `provincia`=? WHERE `id`=?;" );
+            st.setString(1, obj.getCalle());
+            st.setString(2, obj.getSector());
+            st.setString(3, obj.getCiudad());
+            st.setString(4, obj.getProvincia());
+            st.setInt(5, obj.getId());
+            st.executeUpdate();
+ 
         } catch (SQLException ex) {
-            Logger.getLogger(DireccionControlador.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
-         return new Direccion();
-    }
-
-    @Override
-    public ArrayList<Direccion> obtenerTodos(int limite) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return obj;
     }
 
     @Override
     public Direccion buscar(String term) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public Direccion crearDeResultSet(ResultSet rs) throws SQLException {
         return new Direccion(rs.getInt("id"), rs.getString("calle"),
