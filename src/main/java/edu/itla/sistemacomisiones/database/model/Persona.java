@@ -60,7 +60,10 @@ public class Persona {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
+    public String getNombreCompleto(){
+      return getNombre() + " " +  getApellido();
+    }
+    
     public String getDocumentoIdentidad() {
         return documentoIdentidad;
     }
