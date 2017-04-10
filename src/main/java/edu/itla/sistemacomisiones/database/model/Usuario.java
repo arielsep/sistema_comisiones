@@ -45,6 +45,18 @@ public class Usuario {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+    
+    public String getNombre(){
+       return persona.getNombre();
+    }
+    
+    public String getApellido(){
+       return persona.getApellido();
+    }
+    
+    public String getNombreCompleto(){
+       return persona.getNombreCompleto();
+    }
 
     public boolean isDesactivado() {
         return desactivado;
