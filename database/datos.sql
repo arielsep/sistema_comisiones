@@ -30,7 +30,6 @@ CREATE TABLE `direccion` (
   `sector` varchar(200) DEFAULT NULL,
   `ciudad` varchar(200) DEFAULT NULL,
   `provincia` varchar(200) DEFAULT NULL,
-  `direccioncol` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -41,7 +40,7 @@ CREATE TABLE `direccion` (
 
 LOCK TABLES `direccion` WRITE;
 /*!40000 ALTER TABLE `direccion` DISABLE KEYS */;
-INSERT INTO `direccion` VALUES (1,'1','2','DN','Sto Dgo',NULL),(2,'3ra','San Jose','DN','Sto Dgo',NULL),(3,'San Juan','4','DN','Sto Dgo',NULL),(4,'10','Los Jardinez','Sanpedro','SPM',NULL),(5,'24','Los Rios','DN','Sto Dgo',NULL);
+INSERT INTO `direccion` VALUES (1,'1','2','DN','Sto Dgo'),(2,'3ra','San Jose','DN','Sto Dgo'),(3,'San Juan','4','DN','Sto Dgo'),(4,'10','Los Jardinez','Sanpedro','SPM'),(5,'24','Los Rios','DN','Sto Dgo');
 /*!40000 ALTER TABLE `direccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,6 +60,7 @@ CREATE TABLE `inmuebles` (
   `tipo_inmuebles_id` int(11) NOT NULL,
   `direccion_id` int(11) NOT NULL,
   `moneda_id` int(11) NOT NULL,
+  `comision_venta` DECIMAL NULL,
   PRIMARY KEY (`id`),
   KEY `fk_inmuebles_tipo_inmuebles1_idx` (`tipo_inmuebles_id`),
   KEY `fk_inmuebles_direccion1_idx` (`direccion_id`),
@@ -77,7 +77,7 @@ CREATE TABLE `inmuebles` (
 
 LOCK TABLES `inmuebles` WRITE;
 /*!40000 ALTER TABLE `inmuebles` DISABLE KEYS */;
-INSERT INTO `inmuebles` VALUES (1,NULL,5000000,'100mt2',3,1,4,1),(2,NULL,100000,'200mt2',3,2,5,2);
+INSERT INTO `inmuebles` VALUES (1,NULL,5000000,'100mt2',3,1,4,1, 5.5),(2,NULL,100000,'200mt2',3,2,5,2, 10.5);
 /*!40000 ALTER TABLE `inmuebles` ENABLE KEYS */;
 UNLOCK TABLES;
 
