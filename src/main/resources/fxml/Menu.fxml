@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import java.lang.String?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+    <styleClass>
+        <String fx:value="side-menu"/>
+    </styleClass>
+    <JFXListView fx:id="sideList">
+        <Label fx:id="inicio">Inicio
+            <graphic>
+                    <FontAwesomeIconView glyphName="BANK" size="1.5em"/>
+            </graphic>
+        </Label>
+        <Label fx:id="usuarios">Usuarios
+            <graphic>
+                    <FontAwesomeIconView glyphName="USER" size="1.5em"/>
+            </graphic>
+        </Label>
+        <Label fx:id="inmuebles">Inmuebles
+            <graphic>
+                    <FontAwesomeIconView glyphName="HOME" size="1.5em"/>
+            </graphic>
+                </Label>
+        <Label fx:id="ventas">Ventas
+        <graphic>
+                    <FontAwesomeIconView glyphName="DOLLAR" size="1.5em"/>
+            </graphic>
+        </Label>
+    </JFXListView>
+</StackPane>
+
