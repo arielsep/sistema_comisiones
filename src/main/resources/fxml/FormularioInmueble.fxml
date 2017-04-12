@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="511.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+   <children>
+      <JFXTextField fx:id="Dirección" labelFloat="true" layoutX="63.0" layoutY="268.0" promptText="Dirección" />
+      <JFXTextArea fx:id="Detalles" labelFloat="true" layoutX="118.0" layoutY="323.0" prefHeight="85.0" prefWidth="388.0" promptText="Detalles" />
+      <JFXTextField fx:id="Ciudad" labelFloat="true" layoutX="244.0" layoutY="268.0" promptText="Ciudad" />
+      <JFXTextField fx:id="Precio" labelFloat="true" layoutX="207.0" layoutY="95.0" prefHeight="25.0" prefWidth="119.0" promptText="Precio" />
+      <JFXTextField fx:id="Baños" labelFloat="true" layoutX="349.0" layoutY="175.0" promptText="Baños" />
+      <JFXTextField fx:id="Superficie" labelFloat="true" layoutX="423.0" layoutY="95.0" promptText="Superficie" />
+      <JFXTextField fx:id="Dormitorios" labelFloat="true" layoutX="90.0" layoutY="175.0" promptText="Dormitorios" />
+      <JFXButton fx:id="Nuevo" buttonType="RAISED" layoutX="176.0" layoutY="463.0" prefHeight="25.0" prefWidth="56.0" style="-fx-background-color: #2196f3;" text="Nuevo" textFill="#fffdfd" />
+      <JFXButton fx:id="Guardar" buttonType="RAISED" layoutX="29.0" layoutY="463.0" style="-fx-background-color: #2196f3;" text="Guardar" textFill="#fffdfd" />
+      <JFXButton fx:id="Cancelar" buttonType="RAISED" layoutX="338.0" layoutY="463.0" style="-fx-background-color: #2196f3;" text="Cancelar" textFill="#fffdfd" />
+      <JFXButton fx:id="Eliminar" buttonType="RAISED" layoutX="491.0" layoutY="463.0" style="-fx-background-color: #2196f3;" text="Eliminar" textFill="#fffdfd" />
+      <Label contentDisplay="CENTER" layoutX="207.0" layoutY="26.0" text="Crear Inmueble" textAlignment="CENTER" textFill="#0e23ae">
+         <font>
+            <Font name="Georgia" size="30.0" />
+         </font>
+      </Label>
+      <JFXComboBox layoutX="326.0" layoutY="95.0" />
+      <JFXComboBox fx:id="Precio" labelFloat="true" layoutX="38.0" layoutY="95.0" promptText="Tipo Inmueble" />
+      <JFXTextField fx:id="Provincia" labelFloat="true" layoutX="439.0" layoutY="268.0" promptText="Provincia" />
+   </children>
+</AnchorPane>
