@@ -5,6 +5,8 @@
  */
 package edu.itla.sistemacomisiones.database.model;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author Annelisse
@@ -57,6 +59,12 @@ public class Inmueble {
     public Double getPrecio() {
         return precio;
     }
+    
+    
+    public String getPrecioFormateado() {
+        return moneda.getSimbolo() +  NumberFormat.getInstance().format(precio);
+    }
+
 
     public void setPrecio(Double precio) {
         this.precio = precio;
@@ -106,6 +114,11 @@ public class Inmueble {
         return comision;
     }
 
+    
+    public String getComisionFormateada() {
+        return comision + "%";
+    }
+    
     public void setComision(Double comision) {
         this.comision = comision;
     }

@@ -5,6 +5,7 @@
  */
 package edu.itla.sistemacomisiones.database.controlador;
 
+import edu.itla.sistemacomisiones.database.model.Inmueble;
 import edu.itla.sistemacomisiones.database.model.Moneda;
 import edu.itla.sistemacomisiones.database.model.Persona;
 import edu.itla.sistemacomisiones.database.model.Usuario;
@@ -40,9 +41,9 @@ public class VentaControlador extends Controlador<Venta> {
            PreparedStatement st = con.prepareStatement("INSERT INTO "+ tablaBaseDeDatos +
                     "(`usuarios_id`, `moneda_id`, `persona_id`, `precio`) "
                     + "VALUES (?,?,?,?')");
-            st.setInt(1, obj.getUsuario().getId());
+            st.setInt(1, obj.getVendedor().getId());
             st.setInt(2, obj.getMoneda().getId());
-            st.setInt(3, obj.getPersona().getId());
+            st.setInt(3, obj.getComprador().getId());
             st.setDouble(4, obj.getPrecio());
             st.executeUpdate();
  
@@ -60,9 +61,9 @@ public class VentaControlador extends Controlador<Venta> {
                     " SET `usuarios_id`=?, `moneda_id`=?,"
                       + " `persona_id`=?,`precio`=? "
                       + "WHERE `id`=?;" );
-            st.setInt(1, obj.getUsuario().getId());
+            st.setInt(1, obj.getVendedor().getId());
             st.setInt(2, obj.getMoneda().getId());
-            st.setInt(3, obj.getPersona().getId());
+            st.setInt(3, obj.getComprador().getId());
             st.setDouble(4, obj.getPrecio());
             st.setInt(5, obj.getId());
             st.executeUpdate();
@@ -82,9 +83,10 @@ public class VentaControlador extends Controlador<Venta> {
     public Venta crearDeResultSet(ResultSet rs) throws SQLException {
         Usuario us = UsuarioControlador.getInstancia().obtenerPorId(rs.getInt("usuarios_id"));
         Moneda mn = MonedaControlador.getInstancia().obtenerPorId (rs.getInt("moneda_id"));
-        Persona ps = PersonaControlador.getInstancia().obtenerPorId (rs.getInt("pesona_id"));
-        return new Venta(rs.getInt("id"),us, mn, ps,rs.getDouble("precio")  );
+        Persona ps = PersonaControlador.getInstancia().obtenerPorId (rs.getInt("persona_id"));
+        Inmueble inm = InmuebleControlador.getInstancia().obtenerPorId(rs.getInt("inmuebles_id"));
+        return new Venta(rs.getInt("id"),us, mn, ps,rs.getDouble("precio"), inm);
         
-            }
+    }
     
 }
