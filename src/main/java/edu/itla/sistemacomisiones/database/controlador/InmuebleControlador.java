@@ -92,6 +92,6 @@ public class InmuebleControlador extends Controlador<Inmueble>{
         return new Inmueble(rs.getInt("id"), rs.getString("detalles"),
                     rs.getDouble("precio"),rs.getString("superficie"),
                     rs.getInt("dormitorios"),tipoInmueble,direccion,
-                    moneda, rs.getDouble("comision"));
+                    moneda, rs.getDouble("comision_venta"));
     }
 }
