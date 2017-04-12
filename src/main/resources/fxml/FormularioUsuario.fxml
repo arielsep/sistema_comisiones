@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="606.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+   <children>
+      <JFXTextField fx:id="nombres" labelFloat="true" layoutX="27.0" layoutY="91.0" promptText="Nombre" />
+      <JFXComboBox fx:id="sexo" labelFloat="true" layoutX="445.0" layoutY="91.0" promptText="Sexo" />
+      <Label fx:id="lbdatospersonales" layoutX="206.0" layoutY="14.0" text="Datos  Personales" textFill="#11289d">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="apellidos" labelFloat="true" layoutX="27.0" layoutY="139.0" promptText="Apellidos" />
+      <JFXTextField fx:id="Cedula" labelFloat="true" layoutX="27.0" layoutY="190.0" promptText="Cedula" />
+      <JFXTextField fx:id="correo" labelFloat="true" layoutX="27.0" layoutY="238.0" promptText="Correo" />
+      <JFXTextField fx:id="movil" labelFloat="true" layoutX="442.0" layoutY="238.0" promptText="Movil" />
+      <JFXComboBox fx:id="perfil" labelFloat="true" layoutX="445.0" layoutY="139.0" promptText="Perfil" />
+      <JFXComboBox fx:id="estatus" labelFloat="true" layoutX="445.0" layoutY="190.0" promptText="Estatus" />
+      <JFXTextField fx:id="contrasenia" labelFloat="true" layoutX="107.0" layoutY="299.0" promptText="Contraseña" />
+      <JFXTextField fx:id="Contrasenia" labelFloat="true" layoutX="345.0" layoutY="299.0" promptText="Confirmar Contraseña" />
+      <Separator layoutX="87.0" layoutY="275.0" prefHeight="14.0" prefWidth="433.0" />
+      <Label fx:id="lbdatospersonales1" layoutX="236.0" layoutY="72.0" text="Direccion">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="calle" labelFloat="true" layoutX="236.0" layoutY="91.0" promptText="Calle" />
+      <JFXTextField fx:id="sector" labelFloat="true" layoutX="236.0" layoutY="139.0" promptText="Sector" />
+      <JFXTextField fx:id="provincia" labelFloat="true" layoutX="238.0" layoutY="190.0" promptText="Provincia" />
+      <JFXTextField fx:id="provincia" labelFloat="true" layoutX="238.0" layoutY="238.0" promptText="Provincia" />
+      <JFXButton fx:id="guardar" layoutX="167.0" layoutY="351.0" prefHeight="35.0" prefWidth="80.0" ripplerFill="#11289c" text="Guardar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="nuevo" layoutX="262.0" layoutY="351.0" prefHeight="35.0" prefWidth="80.0" ripplerFill="#11289c" text="Nuevo">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="cancelar" layoutX="354.0" layoutY="351.0" prefHeight="35.0" prefWidth="80.0" ripplerFill="#11289c" text="Cancelar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
