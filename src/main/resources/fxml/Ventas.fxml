@@ -4,41 +4,49 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.geometry.Insets?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" prefHeight="568.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox spacing="10">
+<StackPane fx:id="root" prefHeight="640.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox prefHeight="595.0" prefWidth="748.0" spacing="10">
         <children>
-         <Pane prefHeight="200.0" prefWidth="200.0" />
-
-            <HBox alignment="CENTER">
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #2196f3;" text="Crear" textFill="#fffdfd">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" style="-fx-background-color: #2196f3;" text="Actualizar" textFill="#fffdfd">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </JFXButton>
-                <Label fx:id="editableTreeTableViewCount" styleClass="title-label" />
-                <StackPane HBox.hgrow="ALWAYS">
-                    <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
-                        <JFXTextField fx:id="searchField2" promptText="Search..." />
-                    </StackPane>
-                </StackPane>
-            </HBox>
+         <Pane cacheShape="false" centerShape="false" prefHeight="200.0" prefWidth="200.0" scaleShape="false">
+            <children>
+      
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="153.0">
+                      <Label fx:id="editableTreeTableViewCount" styleClass="title-label" />
+                      <StackPane HBox.hgrow="ALWAYS">
+                          <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT" />
+                      </StackPane>
+                  </HBox>
+                     <JFXTextField fx:id="searchField2" layoutX="14.0" layoutY="149.0" prefHeight="25.0" prefWidth="381.0" promptText="Buscar..." />
+               <Label contentDisplay="CENTER" layoutX="344.0" layoutY="31.0" text="Ventas" textAlignment="CENTER" textFill="#0e23ae">
+                  <font>
+                     <Font name="Georgia" size="30.0" />
+                  </font>
+               </Label>
+               <JFXButton buttonType="RAISED" layoutX="635.0" layoutY="148.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #2196f3;" text="Eliminar" textFill="#fffdfd">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="1.5em" wrappingWidth="28.142857551574707" />
+                  </graphic>
+               </JFXButton>
+            </children>
+            <effect>
+               <Reflection />
+            </effect></Pane>
             <JFXTreeTableView fx:id="editableTreeTableView">
                 <columns>
-                    <JFXTreeTableColumn fx:id="firstNameEditableColumn" minWidth="133" resizable="false" text="First Name" />
-                    <JFXTreeTableColumn fx:id="lastNameEditableColumn" minWidth="133" resizable="false" text="Last Name" />
-                    <JFXTreeTableColumn fx:id="ageEditableColumn" minWidth="133" resizable="false" text="Age" />
+                    <JFXTreeTableColumn fx:id="inmueble" minWidth="43.0" prefWidth="129.0" resizable="false" text="Inmueble" />
+                    <JFXTreeTableColumn fx:id="precio" minWidth="11.0" prefWidth="171.0" resizable="false" text="Precio" />
+                    <JFXTreeTableColumn fx:id="comision" minWidth="0.0" prefWidth="132.0" resizable="false" text="Comision" />
+                    <JFXTreeTableColumn fx:id="comprador" minWidth="0.0" prefWidth="138.0" resizable="false" text="Compador" />
+               <JFXTreeTableColumn fx:id="vendedor" minWidth="133" prefWidth="369.0" resizable="false" text="Vendedor" />
                 </columns>
             </JFXTreeTableView>
         </children>
