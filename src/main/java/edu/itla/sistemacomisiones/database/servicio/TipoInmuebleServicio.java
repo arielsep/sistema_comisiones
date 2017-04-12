@@ -1,5 +1,5 @@
 
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.Inmueble;
@@ -10,17 +10,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TipoInmuebleControlador extends Controlador<TipoInmueble>{
-    private static TipoInmuebleControlador controlador;
+public class TipoInmuebleServicio extends Servicio<TipoInmueble>{
+    private static TipoInmuebleServicio controlador;
     
-    public static TipoInmuebleControlador getInstancia (){
+    public static TipoInmuebleServicio getInstancia (){
            if (controlador == null){
-               controlador = new TipoInmuebleControlador();
+               controlador = new TipoInmuebleServicio();
                }
            return controlador;
 }
 
-    private TipoInmuebleControlador() {
+    private TipoInmuebleServicio() {
         super("tipo_inmuebles");
     }
 
@@ -39,7 +39,7 @@ public class TipoInmuebleControlador extends Controlador<TipoInmueble>{
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj;
     } 
@@ -55,7 +55,7 @@ public class TipoInmuebleControlador extends Controlador<TipoInmueble>{
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
     }

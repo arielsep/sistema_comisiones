@@ -1,5 +1,5 @@
 
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.Moneda;
@@ -9,17 +9,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MonedaControlador extends Controlador<Moneda>  {
-    private static MonedaControlador controlador;
+public class MonedaServicio extends Servicio<Moneda>  {
+    private static MonedaServicio controlador;
     
-    public static MonedaControlador getInstancia(){
+    public static MonedaServicio getInstancia(){
            if (controlador == null){
-               controlador = new MonedaControlador();
+               controlador = new MonedaServicio();
            }
            return controlador;
     }
     
-     private MonedaControlador() {
+     private MonedaServicio() {
         super("moneda");
     }
      
@@ -40,7 +40,7 @@ public class MonedaControlador extends Controlador<Moneda>  {
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj; 
     }
@@ -58,7 +58,7 @@ public class MonedaControlador extends Controlador<Moneda>  {
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
     }

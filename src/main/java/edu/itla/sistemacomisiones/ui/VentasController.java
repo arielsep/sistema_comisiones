@@ -10,7 +10,7 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import edu.itla.sistemacomisiones.database.controlador.VentaControlador;
+import edu.itla.sistemacomisiones.database.servicio.VentaServicio;
 import edu.itla.sistemacomisiones.database.model.Venta;
 import io.datafx.controller.ViewController;
 import java.net.URL;
@@ -87,7 +87,7 @@ public class VentasController implements Initializable {
        
        ObservableList<VentasData> ventaData = FXCollections.observableArrayList();
 
-         for (Venta venta : VentaControlador.getInstancia().obtenerTodos(1000)) {
+         for (Venta venta : VentaServicio.getInstancia().obtenerTodos(1000)) {
              ventaData.add(new VentasData(venta));
          }
                  // builUd tree

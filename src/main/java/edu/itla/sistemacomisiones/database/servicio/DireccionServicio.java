@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import com.mysql.cj.api.jdbc.Statement;
 import edu.itla.sistemacomisiones.MainApp;
@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author Annelisse
  */
-public class DireccionControlador extends Controlador<Direccion> {
-    private static DireccionControlador controlador;
+public class DireccionServicio extends Servicio<Direccion> {
+    private static DireccionServicio controlador;
     
-    public static DireccionControlador getInstancia (){
+    public static DireccionServicio getInstancia (){
            if (controlador == null){
-               controlador = new DireccionControlador();
+               controlador = new DireccionServicio();
            }
            return controlador;
     }
     
-    private DireccionControlador() {
+    private DireccionServicio() {
         super("direccion");
     }
 
@@ -51,7 +51,7 @@ public class DireccionControlador extends Controlador<Direccion> {
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj;
     }
@@ -69,7 +69,7 @@ public class DireccionControlador extends Controlador<Direccion> {
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
     }

@@ -10,7 +10,7 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import edu.itla.sistemacomisiones.database.controlador.InmuebleControlador;
+import edu.itla.sistemacomisiones.database.servicio.InmuebleServicio;
 import edu.itla.sistemacomisiones.database.model.Inmueble;
 import io.datafx.controller.ViewController;
 import java.net.URL;
@@ -89,7 +89,7 @@ public class InmueblesController implements Initializable {
 
         ObservableList<InmuebleData> inmbuebles = FXCollections.observableArrayList();
 
-         for (Inmueble inmueble : InmuebleControlador.getInstancia().obtenerTodos(1000)) {
+         for (Inmueble inmueble : InmuebleServicio.getInstancia().obtenerTodos(1000)) {
              inmbuebles.add(new InmuebleData(inmueble));
          }
                  // build tree

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.Conexion;
 import edu.itla.sistemacomisiones.database.model.Direccion;
@@ -18,12 +18,12 @@ import java.util.logging.Logger;
  *
  * @author Annelisse
  */
-public abstract class Controlador<T> {
+public abstract class Servicio<T> {
 
     protected String tablaBaseDeDatos;
     protected Conexion con; 
     
-    public Controlador(String tablaBaseDeDatos) {
+    public Servicio(String tablaBaseDeDatos) {
         this.tablaBaseDeDatos = tablaBaseDeDatos;
         con = Conexion.getInstancia();
     }
@@ -38,7 +38,7 @@ public abstract class Controlador<T> {
             return st.execute();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"eliminar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"eliminar" , ex);
         }
          return false;
     }
@@ -52,7 +52,7 @@ public abstract class Controlador<T> {
                 return crearDeResultSet(rs);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"obtenerPorId" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"obtenerPorId" , ex);
         }
          return null;
     }
@@ -73,7 +73,7 @@ public abstract class Controlador<T> {
                 lista.add(crearDeResultSet(rs));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"obtenerTodos", ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"obtenerTodos", ex);
         }
         return lista;
     }

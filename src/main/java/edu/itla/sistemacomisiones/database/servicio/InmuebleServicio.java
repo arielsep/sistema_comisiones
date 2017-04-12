@@ -1,5 +1,5 @@
 
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.Inmueble;
@@ -13,17 +13,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class InmuebleControlador extends Controlador<Inmueble>{
-    private static InmuebleControlador controlador;
+public class InmuebleServicio extends Servicio<Inmueble>{
+    private static InmuebleServicio controlador;
     
-    public static InmuebleControlador getInstancia (){
+    public static InmuebleServicio getInstancia (){
            if (controlador == null){
-               controlador = new InmuebleControlador();
+               controlador = new InmuebleServicio();
                }
            return controlador;
 }
 
-    private InmuebleControlador() {
+    private InmuebleServicio() {
         super("inmuebles");
     }
 
@@ -49,7 +49,7 @@ public class InmuebleControlador extends Controlador<Inmueble>{
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj;
     }
@@ -75,7 +75,7 @@ public class InmuebleControlador extends Controlador<Inmueble>{
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
     }
@@ -87,11 +87,11 @@ public class InmuebleControlador extends Controlador<Inmueble>{
 
     @Override
     public Inmueble crearDeResultSet(ResultSet rs) throws SQLException {
-        TipoInmueble tipoInmueble = TipoInmuebleControlador.getInstancia()
+        TipoInmueble tipoInmueble = TipoInmuebleServicio.getInstancia()
                 .obtenerPorId(rs.getInt("tipo_inmuebles_id"));
-        Direccion direccion = DireccionControlador.getInstancia()
+        Direccion direccion = DireccionServicio.getInstancia()
                 .obtenerPorId(rs.getInt("direccion_id"));
-        Moneda moneda = MonedaControlador.getInstancia()
+        Moneda moneda = MonedaServicio.getInstancia()
                 .obtenerPorId(rs.getInt("moneda_id"));
 
 

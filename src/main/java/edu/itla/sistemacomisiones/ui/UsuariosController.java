@@ -10,7 +10,7 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import edu.itla.sistemacomisiones.database.controlador.UsuarioControlador;
+import edu.itla.sistemacomisiones.database.servicio.UsuarioServicio;
 import edu.itla.sistemacomisiones.database.model.Usuario;
 import io.datafx.controller.ViewController;
 import java.io.IOException;
@@ -90,7 +90,7 @@ public class UsuariosController implements Initializable {
         
         ObservableList<UsuarioData> usuarios = FXCollections.observableArrayList();
 
-         for (Usuario usuario : UsuarioControlador.getInstancia().obtenerTodos(1000)) {
+         for (Usuario usuario : UsuarioServicio.getInstancia().obtenerTodos(1000)) {
              usuarios.add(new UsuarioData(usuario));
          }
                  // builUd tree

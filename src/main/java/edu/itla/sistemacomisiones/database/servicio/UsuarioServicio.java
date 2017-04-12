@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.PerfilUsuario;
@@ -19,17 +19,17 @@ import java.util.logging.Logger;
  *
  * @author wilmanpc
  */
-public class UsuarioControlador extends Controlador<Usuario> {
-    private static UsuarioControlador controlador;
+public class UsuarioServicio extends Servicio<Usuario> {
+    private static UsuarioServicio controlador;
     
-    public static UsuarioControlador getInstancia (){
+    public static UsuarioServicio getInstancia (){
            if (controlador == null){
-               controlador = new UsuarioControlador();
+               controlador = new UsuarioServicio();
            }
            return controlador;
     }
     
-    private UsuarioControlador() {
+    private UsuarioServicio() {
         super("usuarios");
     }
     @Override
@@ -49,7 +49,7 @@ public class UsuarioControlador extends Controlador<Usuario> {
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj; }
 
@@ -66,7 +66,7 @@ public class UsuarioControlador extends Controlador<Usuario> {
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;}
 
@@ -77,8 +77,8 @@ public class UsuarioControlador extends Controlador<Usuario> {
 
     @Override
     public Usuario crearDeResultSet(ResultSet rs) throws SQLException {
-        Persona per = PersonaControlador.getInstancia().obtenerPorId(rs.getInt("persona_id"));
-        PerfilUsuario ps = PerfilUsuarioControlador.getInstancia().obtenerPorId(rs.getInt("perfil_usuarios_id"));
+        Persona per = PersonaServicio.getInstancia().obtenerPorId(rs.getInt("persona_id"));
+        PerfilUsuario ps = PerfilUsuarioServicio.getInstancia().obtenerPorId(rs.getInt("perfil_usuarios_id"));
          return new Usuario(rs.getInt("id"), rs.getString("contrasenia"),
                     rs.getBoolean("desactivado"),per,ps);
     }

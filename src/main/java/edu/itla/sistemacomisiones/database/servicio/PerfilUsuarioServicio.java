@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.PerfilUsuario;
@@ -18,17 +18,17 @@ import java.util.logging.Logger;
  *
  * @author wilmanpc
  */
-public class PerfilUsuarioControlador extends Controlador<PerfilUsuario> {
-    private static PerfilUsuarioControlador controlador;
+public class PerfilUsuarioServicio extends Servicio<PerfilUsuario> {
+    private static PerfilUsuarioServicio controlador;
     
-    public static PerfilUsuarioControlador getInstancia (){
+    public static PerfilUsuarioServicio getInstancia (){
            if (controlador == null){
-               controlador = new PerfilUsuarioControlador();
+               controlador = new PerfilUsuarioServicio();
            }
            return controlador;
     }
     
-    private PerfilUsuarioControlador() {
+    private PerfilUsuarioServicio() {
         super("perfil_usuarios");
     }
     @Override
@@ -46,7 +46,7 @@ public class PerfilUsuarioControlador extends Controlador<PerfilUsuario> {
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj;
     }
@@ -62,7 +62,7 @@ public class PerfilUsuarioControlador extends Controlador<PerfilUsuario> {
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;  
     }

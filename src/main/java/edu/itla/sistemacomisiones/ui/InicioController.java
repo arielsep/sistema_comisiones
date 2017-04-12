@@ -6,8 +6,8 @@
 package edu.itla.sistemacomisiones.ui;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import edu.itla.sistemacomisiones.database.controlador.InmuebleControlador;
-import edu.itla.sistemacomisiones.database.controlador.VentaControlador;
+import edu.itla.sistemacomisiones.database.servicio.InmuebleServicio;
+import edu.itla.sistemacomisiones.database.servicio.VentaServicio;
 import edu.itla.sistemacomisiones.database.model.Venta;
 import io.datafx.controller.ViewController;
 import java.net.URL;
@@ -72,9 +72,9 @@ public class InicioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
-        int solares = InmuebleControlador.getInstancia().obtenerSolares(1000).size();
-        int casas = InmuebleControlador.getInstancia().obtenerCasas(1000).size();
-        int apartamentos = InmuebleControlador.getInstancia().obtenerApartamentos(1000).size();
+        int solares = InmuebleServicio.getInstancia().obtenerSolares(1000).size();
+        int casas = InmuebleServicio.getInstancia().obtenerCasas(1000).size();
+        int apartamentos = InmuebleServicio.getInstancia().obtenerApartamentos(1000).size();
         precioVentas.setText("RD$" + NumberFormat.getInstance()
                 .format(getTotalVentas()));
         precioApartamento.setText(apartamentos + "");
@@ -84,7 +84,7 @@ public class InicioController implements Initializable {
 
     private double getTotalVentas() {
         double ventas = 0;
-        ArrayList<Venta>  todasLasVentas = VentaControlador
+        ArrayList<Venta>  todasLasVentas = VentaServicio
                 .getInstancia().obtenerTodos(1000);
         for (Venta venta : todasLasVentas) {
             double tasa = venta.getMoneda().getTasa();

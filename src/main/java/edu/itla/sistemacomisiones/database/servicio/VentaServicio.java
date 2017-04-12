@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Inmueble;
 import edu.itla.sistemacomisiones.database.model.Moneda;
@@ -20,18 +20,18 @@ import java.util.logging.Logger;
  *
  * @author ariel
  */
-public class VentaControlador extends Controlador<Venta> {
+public class VentaServicio extends Servicio<Venta> {
     
-    private static VentaControlador controlador;
+    private static VentaServicio controlador;
     
-    public static VentaControlador getInstancia (){
+    public static VentaServicio getInstancia (){
            if (controlador == null){
-               controlador = new VentaControlador();
+               controlador = new VentaServicio();
            }
            return controlador;
     }
 
-    private VentaControlador() {
+    private VentaServicio() {
         super("ventas");
     }
 
@@ -53,7 +53,7 @@ public class VentaControlador extends Controlador<Venta> {
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
     
@@ -74,7 +74,7 @@ public class VentaControlador extends Controlador<Venta> {
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
     }
@@ -86,10 +86,10 @@ public class VentaControlador extends Controlador<Venta> {
 
     @Override
     public Venta crearDeResultSet(ResultSet rs) throws SQLException {
-        Usuario us = UsuarioControlador.getInstancia().obtenerPorId(rs.getInt("usuarios_id"));
-        Moneda mn = MonedaControlador.getInstancia().obtenerPorId (rs.getInt("moneda_id"));
-        Persona ps = PersonaControlador.getInstancia().obtenerPorId (rs.getInt("persona_id"));
-        Inmueble inm = InmuebleControlador.getInstancia().obtenerPorId(rs.getInt("inmuebles_id"));
+        Usuario us = UsuarioServicio.getInstancia().obtenerPorId(rs.getInt("usuarios_id"));
+        Moneda mn = MonedaServicio.getInstancia().obtenerPorId (rs.getInt("moneda_id"));
+        Persona ps = PersonaServicio.getInstancia().obtenerPorId (rs.getInt("persona_id"));
+        Inmueble inm = InmuebleServicio.getInstancia().obtenerPorId(rs.getInt("inmuebles_id"));
         return new Venta(rs.getInt("id"),us, mn, ps,rs.getDouble("precio"), inm);
         
     }

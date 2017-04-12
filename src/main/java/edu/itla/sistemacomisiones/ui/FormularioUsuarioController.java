@@ -8,10 +8,10 @@ package edu.itla.sistemacomisiones.ui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import edu.itla.sistemacomisiones.database.controlador.DireccionControlador;
-import edu.itla.sistemacomisiones.database.controlador.PerfilUsuarioControlador;
-import edu.itla.sistemacomisiones.database.controlador.PersonaControlador;
-import edu.itla.sistemacomisiones.database.controlador.UsuarioControlador;
+import edu.itla.sistemacomisiones.database.servicio.DireccionServicio;
+import edu.itla.sistemacomisiones.database.servicio.PerfilUsuarioServicio;
+import edu.itla.sistemacomisiones.database.servicio.PersonaServicio;
+import edu.itla.sistemacomisiones.database.servicio.UsuarioServicio;
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.PerfilUsuario;
 import edu.itla.sistemacomisiones.database.model.Persona;
@@ -97,7 +97,7 @@ public class FormularioUsuarioController implements Initializable{
         sexo.getItems().add('M');
     
         // Agrega los perfiles al combobox
-        PerfilUsuarioControlador.getInstancia()
+        PerfilUsuarioServicio.getInstancia()
                 .obtenerTodos(1000)
                 .forEach( perfil -> {
                     this.perfil.getItems().add(perfil);
@@ -116,7 +116,7 @@ public class FormularioUsuarioController implements Initializable{
         d.setCalle(calle.getText());
         d.setSector(sector.getText());
         d.setProvincia(provincia.getText());
-        DireccionControlador.getInstancia().crear(d);
+        DireccionServicio.getInstancia().crear(d);
         
         Persona p = new Persona();
         p.setNombre(nombres.getText());
@@ -127,7 +127,7 @@ public class FormularioUsuarioController implements Initializable{
         p.setSexo(sexo.getSelectionModel().getSelectedItem() + "");
         p.setDireccion(d);
         
-        PersonaControlador.getInstancia().crear(p);
+        PersonaServicio.getInstancia().crear(p);
         
         Usuario us = new Usuario();
         us.setContrasenia(contrasenia.getText());
@@ -135,7 +135,7 @@ public class FormularioUsuarioController implements Initializable{
         us.setPerfilUsuario(perfil.getSelectionModel().getSelectedItem());
         us.setPersona(p);
         
-        UsuarioControlador.getInstancia().crear(us);
+        UsuarioServicio.getInstancia().crear(us);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText("Usuario Guardado");

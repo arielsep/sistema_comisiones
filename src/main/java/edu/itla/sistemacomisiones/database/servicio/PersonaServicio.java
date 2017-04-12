@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.itla.sistemacomisiones.database.controlador;
+package edu.itla.sistemacomisiones.database.servicio;
 
 import edu.itla.sistemacomisiones.database.model.Direccion;
 import edu.itla.sistemacomisiones.database.model.Persona;
@@ -17,18 +17,18 @@ import java.util.logging.Logger;
  *
  * @author ariel
  */
-public class PersonaControlador extends Controlador<Persona> {
+public class PersonaServicio extends Servicio<Persona> {
     
-    private static PersonaControlador controlador;
+    private static PersonaServicio controlador;
     
-    public static PersonaControlador getInstancia (){
+    public static PersonaServicio getInstancia (){
            if (controlador == null){
-               controlador = new PersonaControlador();
+               controlador = new PersonaServicio();
            }
            return controlador;
     }
 
-    private PersonaControlador() {
+    private PersonaServicio() {
         super("persona");
     }
     
@@ -56,7 +56,7 @@ public class PersonaControlador extends Controlador<Persona> {
             }
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"crear" , ex);
         }
         return obj;
     }
@@ -79,7 +79,7 @@ public class PersonaControlador extends Controlador<Persona> {
             st.executeUpdate();
  
         } catch (SQLException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);
+            Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE,"actulizar" , ex);
         }
         return obj;
         
@@ -92,7 +92,7 @@ public class PersonaControlador extends Controlador<Persona> {
 
     @Override
     public Persona crearDeResultSet(ResultSet rs) throws SQLException {
-        Direccion dr = DireccionControlador.getInstancia().obtenerPorId(rs.getInt("direccion_id"));
+        Direccion dr = DireccionServicio.getInstancia().obtenerPorId(rs.getInt("direccion_id"));
         return new Persona(rs.getInt("id"), rs.getString("nombre"), 
                 rs.getString("apellido"), rs.getString("documento_identidad"),
                 rs.getString("sexo"),rs.getString("correo"),rs.getString("celular"),
