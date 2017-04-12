@@ -8,6 +8,7 @@ import edu.itla.sistemacomisiones.database.model.TipoInmueble;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -94,4 +95,41 @@ public class InmuebleControlador extends Controlador<Inmueble>{
                     rs.getInt("dormitorios"),tipoInmueble,direccion,
                     moneda, rs.getDouble("comision_venta"));
     }
+    
+    
+    public ArrayList<Inmueble> obtenerApartamentos(int limite) {
+        ArrayList<Inmueble> apartamentos = new ArrayList<Inmueble>();
+        ArrayList<Inmueble> inmuebles = this.obtenerTodos(limite);
+        for (Inmueble inmueble : inmuebles) {
+            if(inmueble.getTipoInmueble().getId() == 1) {
+                apartamentos.add(inmueble);
+            }
+        }
+        return apartamentos;
+    }
+    
+    
+    public ArrayList<Inmueble> obtenerCasas(int limite) {
+        ArrayList<Inmueble> casas = new ArrayList<Inmueble>();
+        ArrayList<Inmueble> inmuebles = this.obtenerTodos(limite);
+        for (Inmueble inmueble : inmuebles) {
+            if(inmueble.getTipoInmueble().getId() == 2) {
+                casas.add(inmueble);
+            }
+        }
+        return casas;
+    }
+
+
+    public ArrayList<Inmueble> obtenerSolares(int limite) {
+        ArrayList<Inmueble> solares = new ArrayList<Inmueble>();
+        ArrayList<Inmueble> inmuebles = this.obtenerTodos(limite);
+        for (Inmueble inmueble : inmuebles) {
+            if(inmueble.getTipoInmueble().getId() == 3) {
+                solares.add(inmueble);
+            }
+        }
+        return solares;
+    }
+        
 }
