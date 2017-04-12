@@ -5,26 +5,31 @@
  */
 package edu.itla.sistemacomisiones.database.model;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author ariel
  */
 public class Venta {
     private int id;
-    private Usuario usuario;
+    private Usuario vendedor;
     private Moneda moneda;
-    private Persona persona;
+    private Persona comprador;
     private double precio;
+    private Inmueble inmueble;
 
     public Venta() {
     }
 
-    public Venta(int id, Usuario usuario, Moneda moneda, Persona persona, double precio) {
+    public Venta(int id, Usuario usuario, Moneda moneda, 
+            Persona persona, double precio, Inmueble inmueble) {
         this.id = id;
-        this.usuario = usuario;
+        this.vendedor = usuario;
         this.moneda = moneda;
-        this.persona = persona;
+        this.comprador = persona;
         this.precio = precio;
+        this.inmueble = inmueble;
     }
 
     public int getId() {
@@ -35,12 +40,12 @@ public class Venta {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Usuario getVendedor() {
+        return vendedor;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setVendedor(Usuario vendedor) {
+        this.vendedor = vendedor;
     }
 
     public Moneda getMoneda() {
@@ -51,21 +56,44 @@ public class Venta {
         this.moneda = moneda;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Persona getComprador() {
+        return comprador;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setComprador(Persona comprador) {
+        this.comprador = comprador;
     }
 
     public double getPrecio() {
         return precio;
     }
+    
+    
+    public String getPrecioFormateado() {
+        return moneda.getSimbolo() +  NumberFormat.getInstance().format(precio);
+    }
 
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
+    public Inmueble getInmueble() {
+        return inmueble;
+    }
+
+    public void setInmueble(Inmueble inmueble) {
+        this.inmueble = inmueble;
+    }
+    
+    public double getComisionVenta(){
+        double comision = this.getInmueble().getComision();
+        return (comision / 100) * precio;
+    }
+    
+    public String getComisionFormateada(){
+        return moneda.getSimbolo() +  NumberFormat.getInstance().format(getComisionVenta());
+    }
+    
     
 
    
