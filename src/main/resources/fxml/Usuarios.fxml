@@ -31,7 +31,7 @@
                      <Font name="Georgia" size="30.0" />
                   </font>
                </Label>
-               <JFXButton buttonType="RAISED" layoutX="419.0" layoutY="148.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #2196f3;" text="Crear" textFill="#fffdfd">
+               <JFXButton fx:id="agregarUsuarioBtn" buttonType="RAISED" layoutX="419.0" layoutY="148.0" onAction="#agregarUsuario" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #2196f3;" text="Crear" textFill="#fffdfd">
                  <graphic>
                     <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="1.5em" wrappingWidth="28.142857551574707" />
                  </graphic>

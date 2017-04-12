@@ -13,18 +13,27 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.itla.sistemacomisiones.database.controlador.UsuarioControlador;
 import edu.itla.sistemacomisiones.database.model.Usuario;
 import io.datafx.controller.ViewController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -94,7 +103,22 @@ public class UsuariosController implements Initializable {
         
     }    
     
-        /*
+    @FXML
+    void agregarUsuario(ActionEvent event) {
+          try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/FormularioUsuario.fxml"));
+            Stage stage = new Stage(StageStyle.DECORATED);
+            Scene scene = new Scene(root);
+            
+            stage.setTitle("Agregar usuarios");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(UsuariosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /*
      * data class
      */
     static final class UsuarioData extends RecursiveTreeObject<UsuarioData> {

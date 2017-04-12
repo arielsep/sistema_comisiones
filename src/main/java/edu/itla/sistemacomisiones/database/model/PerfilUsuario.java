@@ -47,6 +47,9 @@ public class PerfilUsuario {
         this.descripcion = descripcion;
     }
     
-    
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXScrollPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+    <JFXScrollPane fx:id="scroll">
+        <topBar>
+            <children>
+                <JFXButton fx:id="backButton">
+                    <StackPane.alignment>CENTER_LEFT</StackPane.alignment>
+                    <StackPane.margin>
+                        <Insets>
+                            <left>
+                                20
+                            </left>
+                        </Insets>
+                    </StackPane.margin>
+                </JFXButton>
+            </children>
+        </topBar>
+        <bottomBar>
+            <children>
+                <Label style="-fx-text-fill:WHITE; -fx-font-size: 40;">
+                    Store
+                </Label>
+            </children>
+        </bottomBar>
+        <content>
+            <StackPane style="-fx-padding:24;">
+                <VBox spacing="10">
+        <children>
+         <Pane prefHeight="200.0" prefWidth="200.0" />
+
+            <HBox alignment="CENTER">
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" style="-fx-background-color: #2196f3;" text="Crear" textFill="#fffdfd">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" style="-fx-background-color: #2196f3;" text="Actualizar" textFill="#fffdfd">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </JFXButton>
+                <Label fx:id="editableTreeTableViewCount" styleClass="title-label" />
+                <StackPane HBox.hgrow="ALWAYS">
+                    <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+                        <JFXTextField fx:id="searchField2" promptText="Search..." />
+                    </StackPane>
+                </StackPane>
+            </HBox>
+            <JFXTreeTableView fx:id="editableTreeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="firstNameEditableColumn" minWidth="133" resizable="false" text="First Name" />
+                    <JFXTreeTableColumn fx:id="lastNameEditableColumn" minWidth="133" resizable="false" text="Last Name" />
+                    <JFXTreeTableColumn fx:id="ageEditableColumn" minWidth="133" resizable="false" text="Age" />
+                </columns>
+            </JFXTreeTableView>
+        </children>
+    </VBox>
+            </StackPane>
+        </content>
+    </JFXScrollPane>
+</StackPane>
+
