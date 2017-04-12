@@ -66,5 +66,10 @@ public class Direccion {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-            
+          
+    public String getFormateada() {
+        return this.calle + " " + this.sector 
+                + " " + this.ciudad 
+                + " " +this.provincia;
+    }
 }
