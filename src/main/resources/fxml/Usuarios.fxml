@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" prefHeight="640.0" prefWidth="806.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox prefHeight="595.0" prefWidth="748.0" spacing="10">
+        <children>
+         <Pane cacheShape="false" centerShape="false" prefHeight="200.0" prefWidth="200.0" scaleShape="false">
+            <children>
+      
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="153.0">
+                      <Label fx:id="editableTreeTableViewCount" styleClass="title-label" />
+                      <StackPane HBox.hgrow="ALWAYS">
+                          <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT" />
+                      </StackPane>
+                  </HBox>
+                     <JFXTextField fx:id="searchField2" layoutX="14.0" layoutY="149.0" prefHeight="25.0" prefWidth="381.0" promptText="Buscar..." />
+               <Label contentDisplay="CENTER" layoutX="344.0" layoutY="31.0" text="Usuarios" textAlignment="CENTER" textFill="#0e23ae">
+                  <font>
+                     <Font name="Georgia" size="30.0" />
+                  </font>
+               </Label>
+               <JFXButton buttonType="RAISED" layoutX="419.0" layoutY="148.0" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #2196f3;" text="Crear" textFill="#fffdfd">
+                 <graphic>
+                    <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="1.5em" wrappingWidth="28.142857551574707" />
+                 </graphic>
+               </JFXButton>
+               <JFXButton buttonType="RAISED" layoutX="524.0" layoutY="148.0" prefHeight="17.0" prefWidth="87.0" style="-fx-background-color: #2196f3;" text="Editar" textFill="#fffdfd">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" size="1.5em" wrappingWidth="17.142857551574707" />
+                  </graphic>
+               </JFXButton>
+               <JFXButton buttonType="RAISED" layoutX="635.0" layoutY="148.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #2196f3;" text="Eliminar" textFill="#fffdfd">
+                  <graphic>
+                     <FontAwesomeIconView fill="WHITE" glyphName="TRASH" size="1.5em" wrappingWidth="28.142857551574707" />
+                  </graphic>
+               </JFXButton>
+            </children>
+            <effect>
+               <Reflection />
+            </effect></Pane>
+            <JFXTreeTableView fx:id="editableTreeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="id" minWidth="43.0" prefWidth="129.0" resizable="false" text="ID" />
+                    <JFXTreeTableColumn fx:id="nombre" minWidth="0.0" prefWidth="249.0" resizable="false" text="Nombre" />
+                    <JFXTreeTableColumn fx:id="documentoIdentidad" minWidth="11.0" prefWidth="263.0" resizable="false" text="Documento Identidad" />
+                    <JFXTreeTableColumn fx:id="perfil" minWidth="0.0" prefWidth="158.0" resizable="false" text="Perfil" />
+                </columns>
+            </JFXTreeTableView>
+        </children>
+    </VBox>
+</StackPane>
