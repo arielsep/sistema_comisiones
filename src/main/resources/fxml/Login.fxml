@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="edu.itla.sistemacomisiones.ui.LoginController">
+   
+
+
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTextField id="ttest" focusColor="#9c27b0" labelFloat="true" layoutX="146.0" layoutY="161.0" prefHeight="30.0" prefWidth="338.0" promptText="Correo" />
+            <JFXPasswordField focusColor="#9c27b0" labelFloat="true" layoutX="146.0" layoutY="247.0" prefHeight="30.0" prefWidth="338.0" promptText="Password" />
+            <JFXButton buttonType="RAISED" layoutX="146.0" layoutY="343.0" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="338.0" ripplerFill="WHITE" style="-fx-background-color: #9C27B0;" text="Iniciar Sesion" textFill="WHITE" />
+            <FontAwesomeIconView glyphName="HOME" layoutX="153.0" layoutY="125.0" size="40" text="" wrappingWidth="37.0" />
+            <Label fx:id="label" layoutX="216.0" layoutY="83.0" text="Bienes Raices">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
