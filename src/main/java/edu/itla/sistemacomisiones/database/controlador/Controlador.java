@@ -34,6 +34,7 @@ public abstract class Controlador<T> {
         try {
             PreparedStatement st = con.prepareStatement("DELETE FROM " + tablaBaseDeDatos + " where id = ?");
             st.setInt(1, id);
+//            st
             return st.execute();
  
         } catch (SQLException ex) {

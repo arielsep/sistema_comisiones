@@ -48,7 +48,12 @@ public class PersonaControlador extends Controlador<Persona> {
             st.setString(6, obj.getCelular());
             st.setInt(7, obj.getDireccion().getId());
             
-            obj.setId(st.executeUpdate());
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);

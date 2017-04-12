@@ -45,7 +45,12 @@ public class VentaControlador extends Controlador<Venta> {
             st.setInt(2, obj.getMoneda().getId());
             st.setInt(3, obj.getComprador().getId());
             st.setDouble(4, obj.getPrecio());
-            st.executeUpdate();
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"actulizar" , ex);

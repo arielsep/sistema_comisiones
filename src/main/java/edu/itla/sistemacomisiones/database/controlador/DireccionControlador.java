@@ -43,7 +43,12 @@ public class DireccionControlador extends Controlador<Direccion> {
             st.setString(2, obj.getSector());
             st.setString(3, obj.getCiudad());
             st.setString(4, obj.getProvincia());
-            obj.setId(st.executeUpdate());
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);

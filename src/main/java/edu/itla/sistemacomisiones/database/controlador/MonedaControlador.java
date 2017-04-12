@@ -32,7 +32,12 @@ public class MonedaControlador extends Controlador<Moneda>  {
             st.setString(2, obj.getSimbolo());
             st.setDouble(3, obj.getTasa());
             st.setBoolean(4,obj.isEsPrincipal());
-            obj.setId(st.executeUpdate());
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);

@@ -41,7 +41,12 @@ public class UsuarioControlador extends Controlador<Usuario> {
             st.setBoolean(2, obj.isDesactivado());
             st.setInt(3, obj.getPersona().getId());
             st.setInt(4, obj.getPerfilUsuario().getId());
-            obj.setId(st.executeUpdate());
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);

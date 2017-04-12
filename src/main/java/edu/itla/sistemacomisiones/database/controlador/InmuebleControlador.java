@@ -41,7 +41,12 @@ public class InmuebleControlador extends Controlador<Inmueble>{
             st.setInt(6, obj.getDireccion().getId());
             st.setInt(7, obj.getMoneda().getId());
             st.setDouble(8, obj.getComision());
-            obj.setId(st.executeUpdate());
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);

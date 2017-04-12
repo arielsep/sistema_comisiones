@@ -31,7 +31,12 @@ public class TipoInmuebleControlador extends Controlador<TipoInmueble>{
                     "  (`nombre`, `descripcion`) VALUES (?, ?); " );
             st.setString(1, obj.getNombre());
             st.setString(2, obj.getDescripcion());
-            obj.setId(st.executeUpdate());
+            st.execute();
+            ResultSet rs = st.getGeneratedKeys();
+            
+            if(rs.next()){
+                obj.setId(rs.getInt(1));
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE,"crear" , ex);
